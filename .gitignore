@@ -1,0 +1,48 @@
+### IntelliJ IDEA ###
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+.kotlin
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### ChippyBookNook ###
+# 编译产物
+target/
+frontend/dist/
+# 上传的图书与封面（含用户数据，不入库）
+uploads/
+# 前端依赖（几十万个小文件，绝不入库）
+frontend/node_modules/
+# IDE 配置
+.idea/
+*.iml
+# 本地真实配置（账号密码/密钥），推 GitHub 用 application-example.yml 模板
+application.yml
+# 本地测试文件
+test.http
+test-book.epub
+test-book.txt

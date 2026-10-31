@@ -1,0 +1,28 @@
+server:
+  port: 9090
+
+# JWT 签名密钥：部署时请改成你自己的随机字符串，不要用示例值
+jwt:
+  secret: your-secret-key-change-me
+
+# 文件上传目录：相对路径，基于程序运行目录
+file:
+  upload-dir: uploads/
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/chippy_library?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: your_mysql_username
+    password: your_mysql_password
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
