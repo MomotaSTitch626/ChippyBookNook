@@ -26,33 +26,22 @@ public class BookTagController {
         return Result.success(bookTagService.list());
     }
 
-    //添加书标签
+    //添加书标签：Controller 收参、调 Service；查重、保存都在 BookTagServiceImpl.add 里
     @PostMapping
-    public Result<?> add(@RequestBody BookTag bookTag) {
-        long count = bookTagService.lambdaQuery()
-                .eq(BookTag::getBookId, bookTag.getBookId())
-                .eq(BookTag::getTagName, bookTag.getTagName())
-                .count();
-        if(count > 0){
-            return Result.error("该标签已存在");
-        }
-        bookTagService.save(bookTag);
-        return Result.success(bookTag);
+    public Result<BookTag> add(@RequestBody BookTag bookTag) {
+        return bookTagService.add(bookTag);
     }
 
+    //删除标签：Controller 收参、调 Service；删除逻辑在 BookTagServiceImpl.delete 里
     @DeleteMapping("/{id}")
     public Result<String> delete(@PathVariable Long id) {
-        bookTagService.removeById(id);
-        return Result.success("删除成功");
+        return bookTagService.delete(id);
     }
 
-    //查某本书的标签
+    //查某本书的标签：条件查询在 BookTagServiceImpl.byBook 里
     @GetMapping("/book/{bookId}")
     public Result<List<BookTag>> byBook(@PathVariable Long bookId) {
-        List<BookTag> list = bookTagService.lambdaQuery()
-                .eq(BookTag::getBookId, bookId)
-                .list();
-        return Result.success(list);
+        return bookTagService.byBook(bookId);
     }
 
 }
